@@ -26,3 +26,10 @@ def blog_home(request):
         "dummy":"나는 더미야"
     }
     return render(request,'blog/index.html', context)
+
+def blog_post_view(request, post_id):
+    a_post = Post.objects.get(id=post_id)
+    context = {
+        "a_post_key":a_post
+    }
+    return render(request, 'blog/detail.html', context)
