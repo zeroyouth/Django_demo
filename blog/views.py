@@ -33,3 +33,18 @@ def blog_post_view(request, post_id):
         "a_post_key":a_post
     }
     return render(request, 'blog/detail.html', context)
+
+def blog_post_update(request, post_id):
+    a_post = Post.objects.get(id = post_id)
+    context = {
+        "id" : a_post.id,
+        "title" : a_post.title,
+        "content" : a_post.content,
+    }
+    if request.method == "GET":
+        return render(request, 'blog/edit.html', context)
+    if request.method == "POST":
+        a_post.title = request.POST["title"]
+        a_post.content = request.POST["content"]
+        a_post.save()
+        return HttpResponseRedirect(f"/blog/post-view/{post_id}/")
