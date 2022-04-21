@@ -5,7 +5,15 @@ from django.http import HttpResponse, HttpResponseNotFound
 # Create your views here.
 
 def index(request):
-    return render(request, "base.html")
+    context = {
+        "weather_data" : {
+            "weather": "아주 맑음",
+            "temperature": "17도",   
+        }
+    }
+    return render(request, "base.html", context)
+
+
 
 def months(request, month):
     month_list = []
