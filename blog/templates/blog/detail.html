@@ -9,9 +9,13 @@
 </head>
 
 <body>
-  <h1>{{a_post_key.title}}</h1>
-  <h2>{{a_post_key.content}}</h2>
-  </ol>
+  <h1>{{title}}</h1>
+  <h2>{{content}}</h2>
+  <a href="/blog/post-edit/{{id}}/">수정하기</a>
+  <form action="/blog/post-delete/{{id}}/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="삭제" />
+  </form>
 </body>
 
 </html>

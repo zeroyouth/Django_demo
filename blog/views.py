@@ -30,7 +30,9 @@ def blog_home(request):
 def blog_post_view(request, post_id):
     a_post = Post.objects.get(id=post_id)
     context = {
-        "a_post_key":a_post
+        "id" : a_post.id,
+        "title" : a_post.title,
+        "content" : a_post.content,
     }
     return render(request, 'blog/detail.html', context)
 
@@ -48,3 +50,9 @@ def blog_post_update(request, post_id):
         a_post.content = request.POST["content"]
         a_post.save()
         return HttpResponseRedirect(f"/blog/post-view/{post_id}/")
+
+def blog_post_delete(request, post_id):
+    if request.method == "POST":
+        a_post = Post.objects.get(id = post_id)
+        a_post.delete()
+        return HttpResponseRedirect('/blog/home/')
