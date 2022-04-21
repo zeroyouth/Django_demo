@@ -10,6 +10,20 @@
 
 <body>
   <h1>오늘의 날씨는 {{ weather_data.weather }} 오늘의 온도는 {{ weather_data.temperature }}</h1>
+
+  <h2>{{ members.1 }}</h2>
+  {% for member in members %}
+
+  <p>{{member}}</p>
+  {% endfor %}
+
+  {% if members.1 == "hooni" %}
+  <p>후니</p>
+  {% elif members.1 == "janny" %}
+  <p>제니</p>
+  {% else %}
+  <p>nope</p>
+  {% endif %}
 </body>
 
 </html>

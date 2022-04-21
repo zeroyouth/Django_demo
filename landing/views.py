@@ -9,7 +9,7 @@ def index(request):
         "weather_data" : {
             "weather": "아주 맑음",
             "temperature": "17도",   
-        }
+        }, "members":['hooni','janny','jisu']
     }
     return render(request, "base.html", context)
 
