@@ -15,7 +15,11 @@
   {% for member in members %}
 
   <p>{{member}}</p>
+  {% empty %}
+  <p>멋사 핑크 해체됨</p>
   {% endfor %}
+
+  <p> 멋사 핑크 총 멤버수는 {{members|length}} 명입니다.</p>
 
   {% if members.1 == "hooni" %}
   <p>후니</p>
@@ -24,6 +28,9 @@
   {% else %}
   <p>nope</p>
   {% endif %}
+
+  {#주석입니다.#}
+
 </body>
 
 </html>
