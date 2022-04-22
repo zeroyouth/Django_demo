@@ -2,6 +2,7 @@ from pydoc import render_doc
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
+from django.urls import reverse
 
 # Create your views here.
 
@@ -16,7 +17,7 @@ def blog_post_write(request):
       new_post.title = request.POST["title"]
       new_post.content = request.POST["content"]
       new_post.save()
-      return HttpResponseRedirect("/blog/post-write/")
+      return HttpResponseRedirect(reverse("blog:home"))
 
 def blog_home(request):
     blog_posts = Post.objects.all()
@@ -49,10 +50,10 @@ def blog_post_update(request, post_id):
         a_post.title = request.POST["title"]
         a_post.content = request.POST["content"]
         a_post.save()
-        return HttpResponseRedirect(f"/blog/post-view/{post_id}/")
+        return HttpResponseRedirect(reverse("blog:detail",args=[a_post.id]))
 
 def blog_post_delete(request, post_id):
     if request.method == "POST":
         a_post = Post.objects.get(id = post_id)
         a_post.delete()
-        return HttpResponseRedirect('/blog/home/')
+        return HttpResponseRedirect(reverse("blog:home"))
