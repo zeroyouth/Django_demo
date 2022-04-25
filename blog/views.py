@@ -37,6 +37,10 @@ def blog_post_view(request, post_id):
         "title" : a_post.title,
         "content" : a_post.content,
     }
+
+    if a_post.head_image:
+        context["image"]=a_post.head_image
+
     return render(request, 'blog/detail.html', context)
 
 def blog_post_update(request, post_id):
@@ -46,6 +50,8 @@ def blog_post_update(request, post_id):
         "title" : a_post.title,
         "content" : a_post.content,
     }
+
+    
     if request.method == "GET":
         return render(request, 'blog/edit.html', context)
     if request.method == "POST":
