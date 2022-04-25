@@ -4,7 +4,6 @@ from .models import Post # post불러오기
 
 # 관리자이외 수정 불가능
 class PostAdminConfig(admin.ModelAdmin):
-    readonly_fields = ["title"]
     list_filter = ['title']
 
 admin.site.register(Post, PostAdminConfig)

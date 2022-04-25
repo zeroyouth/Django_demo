@@ -16,6 +16,8 @@ def blog_post_write(request):
       new_post = Post()
       new_post.title = request.POST["title"]
       new_post.content = request.POST["content"]
+      if request.FILES.get("image"):
+          new_post.head_image = request.FILES.get("image")
       new_post.save()
       return HttpResponseRedirect(reverse("blog:home"))
 
