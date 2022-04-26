@@ -12,7 +12,14 @@
       <span><a href="{% url "blog:home" %}">홈페이지</a></span>
       <span><a href="{% url "blog:home" %}">블로그</a></span>
       <span><a href="{% url "blog:create" %}">작성 페이지</a></span>
-      <span><a href="{% url "blog:detail" 5 %}">5번 상세페이지</a></span>
+      <span><a href="{% url "my_accounts:login" %}">로그인</a></span>
+      <span>
+        <form action="" method="post">
+          <button type="submit">
+            로그아웃
+          </button>
+        </form>
+      </span>
     </nav>
     {% block main %} {% endblock %}
     <footer>푸터 입니다.</footer>

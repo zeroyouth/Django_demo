@@ -3,7 +3,7 @@
 <h1>{{title}}</h1>
 <h2>{{content}}</h2>
 {% if image %}
-<img scr="{{ image.url }}" />
+<img src="{{ image.url }}" width="400px" />
 {% endif %}
 <a href="/blog/post-edit/{{id}}/">수정하기</a>
 <form action="/blog/post-delete/{{id}}/" method="post">
